@@ -8,6 +8,11 @@ from string import Template
 
 import feedparser
 from schedule import every, repeat, run_pending
+from twilio.rest import Client
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Set up SMTP server
 session = smtplib.SMTP("smtp.gmail.com", 587)
@@ -17,16 +22,40 @@ password = os.environ.get("EMAIL_PASSWORD")
 session.login(from_address, password)
 
 
-# function to remove the tags from the summary
-TAG_RE = re.compile(r'<[^>]+>')
 def remove_tags(text):
-    return TAG_RE.sub('', text)
+    # function to remove the tags from the summary
+    TAG_RE = re.compile(r"<[^>]+>")
+    return TAG_RE.sub("", text)
+
 
 # function to read a file
 def read_template(filename):
     with open(filename, "r", encoding="utf-8") as template_file:
         template_file_content = template_file.read()
     return Template(template_file_content)
+
+
+# account_sid = os.environ.get("SID")
+account_sid = os.environ.get("ACCOUNT_SID")
+auth_token = os.environ.get("AUTH_TOKEN")
+
+
+# function to send sms using twilio
+def send_sms(entry):
+
+    print(account_sid)
+    print(auth_token)
+
+    from_phone = "+19034209352"
+    to_phone = "+233551528489"
+
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        body=f"{entry.title} - {entry.link}", from_=from_phone, to=to_phone
+    )
+
+    print(message.sid)
 
 
 # function to send an email
@@ -42,7 +71,7 @@ def send_email(entry):
     # Setup the parameters of the message
     msg["From"] = from_address
     msg["To"] = to_address
-    msg["Subject"] = "Most Recent Upwork Entry"
+    msg["Subject"] = f"Most Recent Upwork Entry - {entry.title}"
 
     # Add in the message body
     msg.attach(MIMEText(message, "plain"))
@@ -62,7 +91,8 @@ def check_most_recent_feed():
 
     entry = rss.entries[0]
 
-    send_email(entry)
+    # send_email(entry)
+    send_sms(entry)
 
 
 def main():

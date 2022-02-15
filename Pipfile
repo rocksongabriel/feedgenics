@@ -9,6 +9,8 @@ requests = "*"
 delorean = "*"
 ipython = "*"
 schedule = "*"
+twilio = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
