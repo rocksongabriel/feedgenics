@@ -20,9 +20,6 @@ session.starttls()
 from_address = os.environ.get("EMAIL_ADDRESS")
 password = os.environ.get("EMAIL_PASSWORD")
 
-print(from_address)
-print(password)
-
 session.login(from_address, password)
 
 
