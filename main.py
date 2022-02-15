@@ -42,10 +42,6 @@ auth_token = os.environ.get("AUTH_TOKEN")
 
 # function to send sms using twilio
 def send_sms(entry):
-
-    print(account_sid)
-    print(auth_token)
-
     from_phone = "+19034209352"
     to_phone = "+233551528489"
 
@@ -82,7 +78,7 @@ def send_email(entry):
     print("Email sent")
 
 
-# @repeat(every(2).minutes)
+@repeat(every(10).minutes)
 def check_most_recent_feed():
     most_recent__url = "https://www.upwork.com/ab/feed/topics/rss?securityToken=2f5d5ccd155d0ed6da9d7645a7a421fd418dfbd3d61b4c516bf0367377c57f619ebc1852950b1f1d78e111c66f552da4eb3297b0beefa4d1c9b9d4b97883aac8&userUid=1492101406951632896&orgUid=1492101406951632897&topic=most-recent"
     rss = feedparser.parse(most_recent__url)
@@ -91,16 +87,19 @@ def check_most_recent_feed():
 
     entry = rss.entries[0]
 
-    # send_email(entry)
+    send_email(entry)
     send_sms(entry)
 
 
 def main():
-    # while True:
-    #     run_pending()
-    #     time.sleep(1)
-    check_most_recent_feed()
+    while True:
+        run_pending()
+        time.sleep(1)
 
 
 if __name__ == "__main__":
     main()
+
+# TODO
+# todo - create a very simple csv file and append the just recent update to it, and if the current one and the new one are
+# todo - not the same, send the mail
