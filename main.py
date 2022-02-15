@@ -84,7 +84,7 @@ def check_most_recent_feed():
     entry = rss.entries[0]
 
     send_email(entry)
-    send_sms(entry)
+    # send_sms(entry)
 
 
 def main():
