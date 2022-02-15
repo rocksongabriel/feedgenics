@@ -95,6 +95,7 @@ def check_most_recent_feed():
 
 def main():
     while True:
+        print("-------------- application running ---------------")
         run_pending()
         time.sleep(1)
 
