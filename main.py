@@ -1,4 +1,5 @@
 import os
+import re
 import smtplib
 import time
 from email.mime.multipart import MIMEMultipart
@@ -15,6 +16,12 @@ from_address = os.environ.get("EMAIL_ADDRESS")
 password = os.environ.get("EMAIL_PASSWORD")
 session.login(from_address, password)
 
+
+# function to remove the tags from the summary
+TAG_RE = re.compile(r'<[^>]+>')
+def remove_tags(text):
+    return TAG_RE.sub('', text)
+
 # function to read a file
 def read_template(filename):
     with open(filename, "r", encoding="utf-8") as template_file:
@@ -28,7 +35,9 @@ def send_email(entry):
     to_address = "thegabrielrockson@gmail.com"
 
     msg = MIMEMultipart()  # create a message
-    message = message_template.substitute(TITLE=entry.title, LINK=entry.link)
+    message = message_template.substitute(
+        TITLE=entry.title, LINK=entry.link, SUMMARY=remove_tags(entry.summary)
+    )
 
     # Setup the parameters of the message
     msg["From"] = from_address
@@ -48,12 +57,13 @@ def send_email(entry):
 def check_most_recent_feed():
     most_recent__url = "https://www.upwork.com/ab/feed/topics/rss?securityToken=2f5d5ccd155d0ed6da9d7645a7a421fd418dfbd3d61b4c516bf0367377c57f619ebc1852950b1f1d78e111c66f552da4eb3297b0beefa4d1c9b9d4b97883aac8&userUid=1492101406951632896&orgUid=1492101406951632897&topic=most-recent"
     rss = feedparser.parse(most_recent__url)
-    
+
     # TODO - send the last 3 most recent
 
     entry = rss.entries[0]
-    
+
     send_email(entry)
+
 
 def main():
     # while True:
