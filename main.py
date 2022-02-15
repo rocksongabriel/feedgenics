@@ -83,7 +83,7 @@ def send_email(entry):
     print("Email sent")
 
 
-@repeat(every(10).minutes)
+@repeat(every(2).seconds)
 def check_most_recent_feed():
     most_recent__url = "https://www.upwork.com/ab/feed/topics/rss?securityToken=2f5d5ccd155d0ed6da9d7645a7a421fd418dfbd3d61b4c516bf0367377c57f619ebc1852950b1f1d78e111c66f552da4eb3297b0beefa4d1c9b9d4b97883aac8&userUid=1492101406951632896&orgUid=1492101406951632897&topic=most-recent"
     rss = feedparser.parse(most_recent__url)
@@ -108,3 +108,5 @@ if __name__ == "__main__":
 # TODO
 # todo - create a very simple csv file and append the just recent update to it, and if the current one and the new one are
 # todo - not the same, send the mail
+
+# TODO - add error handling to the code
