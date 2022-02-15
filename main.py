@@ -19,6 +19,10 @@ session = smtplib.SMTP("smtp.gmail.com", 587)
 session.starttls()
 from_address = os.environ.get("EMAIL_ADDRESS")
 password = os.environ.get("EMAIL_PASSWORD")
+
+prnt(from_address)
+print(password)
+
 session.login(from_address, password)
 
 
@@ -56,6 +60,7 @@ def send_sms(entry):
 
 # function to send an email
 def send_email(entry):
+    
     message_template = read_template("templates/email.txt")
     to_address = "thegabrielrockson@gmail.com"
 
