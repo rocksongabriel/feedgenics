@@ -20,9 +20,6 @@ session.starttls()
 from_address = os.environ.get("EMAIL_ADDRESS")
 password = os.environ.get("EMAIL_PASSWORD")
 
-session.login(from_address, password)
-
-
 def remove_tags(text):
     # function to remove the tags from the summary
     TAG_RE = re.compile(r"<[^>]+>")
@@ -57,6 +54,7 @@ def send_sms(entry):
 
 # function to send an email
 def send_email(entry):
+    session.login(from_address, password)
     
     message_template = read_template("templates/email.txt")
     to_address = "thegabrielrockson@gmail.com"
