@@ -1,5 +1,10 @@
-RECENT UPWORK POST THAT MATCH YOUR SKILLS AND PROFILE DESCRIPTION.
+Recent Upwork Job Posting That Matches Your Skills and Profile Description
+--------------------------------------------------------------------------
 
-Post Entry: ${TITLE}
-Post Link : ${LINK}
-Summary: ${SUMMARY}
+Time Pulished: ${DATE_PUBLISHED}
+
+Job Title: ${TITLE}
+
+Job Link : ${LINK}
+
+Job Summary: ${SUMMARY}
