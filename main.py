@@ -66,38 +66,47 @@ def send_sms(entry):
     print(message.sid)
 
 
-# function to send an email
-def send_email(entry):
+def set_up_smtp_server():
     # Set up SMTP server
     session = smtplib.SMTP("smtp.gmail.com", 587)
     session.starttls()
+
+    return session
+
+
+def construct_email_message(from_address, to_address, message):
+    msg = MIMEMultipart()  # create a message
+    # Setup the parameters of the message
+    msg["From"] = from_address
+    msg["To"] = to_address
+    msg["Subject"] = f"Most Recent Upwork Job Entry Matching Your Skills"
+    msg.attach(MIMEText(message, "plain"))
+
+    return msg
+
+
+# function to send an email
+def send_email(entry):
     from_address = os.environ.get("EMAIL_ADDRESS")
     password = os.environ.get("EMAIL_PASSWORD")
+    session = set_up_smtp_server()
     session.login(from_address, password)
 
     message_template = read_template("templates/email.txt")
     to_address = "thegabrielrockson@gmail.com"
-    msg = MIMEMultipart()  # create a message
     message = message_template.substitute(
         TITLE=entry.title,
         LINK=entry.link,
         SUMMARY=remove_tags(entry.summary),
         DATE_PUBLISHED=entry.published,
     )
-
-    # Setup the parameters of the message
-    msg["From"] = from_address
-    msg["To"] = to_address
-    msg["Subject"] = f"Most Recent Upwork Entry - {entry.title}"
-    # Add in the message body
-    msg.attach(MIMEText(message, "plain"))
-
-    # Send the message via the server
+    
+    msg = construct_email_message(from_address, to_address, message)
     session.send_message(msg)
-    print("Email sent -----------------------")
+    print("Email sent ------------------------------")
 
 
-@repeat(every(5).minutes)
+@repeat(every(1).minutes)
 def check_most_recent_feed():
     most_recent__url = "https://www.upwork.com/ab/feed/topics/rss?securityToken=2f5d5ccd155d0ed6da9d7645a7a421fd418dfbd3d61b4c516bf0367377c57f619ebc1852950b1f1d78e111c66f552da4eb3297b0beefa4d1c9b9d4b97883aac8&userUid=1492101406951632896&orgUid=1492101406951632897&topic=most-recent"
     rss = feedparser.parse(most_recent__url)
