@@ -1,3 +1,4 @@
+import csv
 import os
 import re
 import smtplib
@@ -7,12 +8,31 @@ from email.mime.text import MIMEText
 from string import Template
 
 import feedparser
+from dotenv import load_dotenv
 from schedule import every, repeat, run_pending
 from twilio.rest import Client
 
-from dotenv import load_dotenv
-
 load_dotenv()
+
+
+def write_to_csv(entry):
+    with open("most-recent.csv", mode="a") as csv_file:
+        field_names = ["published", "title"]
+        csv_dict_writer = csv.DictWriter(csv_file, fieldnames=field_names)
+
+        entry_dict = {
+            "published": entry.published,
+            "title": remove_tags(entry.title),
+        }
+        csv_dict_writer.writerow(entry_dict)
+        print("Entry Entered --------------------------- ")
+
+
+def get_recent_entry_title():
+    with open("most-recent.csv", mode="r") as csv_file:
+        csv_dict_reader = csv.DictReader(csv_file)
+        return [row["title"] for row in csv_dict_reader][-1]
+
 
 def remove_tags(text):
     # function to remove the tags from the summary
@@ -54,12 +74,15 @@ def send_email(entry):
     from_address = os.environ.get("EMAIL_ADDRESS")
     password = os.environ.get("EMAIL_PASSWORD")
     session.login(from_address, password)
-    
+
     message_template = read_template("templates/email.txt")
     to_address = "thegabrielrockson@gmail.com"
     msg = MIMEMultipart()  # create a message
     message = message_template.substitute(
-        TITLE=entry.title, LINK=entry.link, SUMMARY=remove_tags(entry.summary)
+        TITLE=entry.title,
+        LINK=entry.link,
+        SUMMARY=remove_tags(entry.summary),
+        DATE_PUBLISHED=entry.published,
     )
 
     # Setup the parameters of the message
@@ -68,7 +91,7 @@ def send_email(entry):
     msg["Subject"] = f"Most Recent Upwork Entry - {entry.title}"
     # Add in the message body
     msg.attach(MIMEText(message, "plain"))
-    
+
     # Send the message via the server
     session.send_message(msg)
     print("Email sent -----------------------")
@@ -83,13 +106,19 @@ def check_most_recent_feed():
 
     entry = rss.entries[0]
 
-    send_email(entry)
-    # send_sms(entry)
+    recent_title = get_recent_entry_title()
+    if entry.title != recent_title:
+        write_to_csv(entry)
+        send_email(entry)
+        # TODO also add sending sms
+    else:
+        print(f"Job with title '{entry.title}' already exists")
 
 
 def main():
     while True:
         run_pending()
+        time.sleep(1)
 
 
 if __name__ == "__main__":
