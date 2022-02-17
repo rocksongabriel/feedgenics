@@ -8,3 +8,5 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS += []
+
+SHELL_PLUS = "ipython"

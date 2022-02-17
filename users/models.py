@@ -20,7 +20,7 @@ class CustomUserManager(BaseUserManager):
 
     def create_user(self, email, password=None):
         """Creates and saves a normal user"""
-        user = self._create_user(email=email, password=password, **kwargs)
+        user = self._create_user(email=email, password=password)
 
         return user
 
@@ -49,3 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return self.email
+    
