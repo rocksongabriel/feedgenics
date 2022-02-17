@@ -8,3 +8,9 @@ test-*.py
 test-rss.txt
 
 node_modules/
+
+.coverage
+
+__pycache__/
+
+.pytest_cache/
