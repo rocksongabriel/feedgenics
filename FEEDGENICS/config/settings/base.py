@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Developer apps
     "users.apps.UsersConfig",
+    # 3rd party applications
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ DATABASES = {
         "NAME": "feedgenics_db",
         "USER": "feedgenics_user",
         "PASSWORD": "testpass1234",
-        "HOST": "localpost",
+        "HOST": "localhost",
         "PORT": 5432,
     }
 }
