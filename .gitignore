@@ -6,3 +6,5 @@ test-*.py
 .vscode
 
 test-rss.txt
+
+node_modules/
