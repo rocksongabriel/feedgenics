@@ -33,6 +33,5 @@ def test_createsuper_user(new_user):
     assert superuser.is_admin
     assert superuser.is_superuser
 
-    
 
 # TODO - test the line that raises ValueError
