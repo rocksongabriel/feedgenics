@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ------------------------------- FORMS ----------------------- */
+.auth-form-label {
+  @apply text-black text-lg;
+}
+
+.auth-form-input {
+  @apply py-2.5 px-2 md:px-4 w-full 
+  border-2 border-gray-300
+  focus:border-gray-900
+  outline-none
+  rounded-md
+}
+
+.auth-form-helptext {
+  @apply text-sm text-black
+}
+
+.auth-form-btn-1 {
+  @apply text-white font-bold bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4;
+}
+
+.auth-form-btn-2 {
+  @apply text-white font-bold bg-green-700 hover:bg-green-800 rounded-md py-2 px-4;
+}
