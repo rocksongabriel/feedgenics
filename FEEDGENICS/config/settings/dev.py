@@ -10,3 +10,8 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS += []
 
 SHELL_PLUS = "ipython"
+
+# EMAIL CONFIGURATION FOR TESTING
+DEFAULT_FROM_EMAIL = "test@feedgenics.com"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
