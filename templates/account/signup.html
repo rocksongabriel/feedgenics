@@ -1,5 +1,5 @@
 {% extends "account/base.html" %}
-{% load i18n %}
+{% load i18n account socialaccount %}
 
 {% block title %}{% trans "Create an account at Feedgenics" %}{% endblock %}
 
@@ -19,7 +19,7 @@
         <div>
           <label class="auth-form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
           <input 
-            type="text"
+            type="email"
             class="auth-form-input"
             id="{{ form.email.id_for_label }}" 
             name="{{ form.email.name }}" 
@@ -67,11 +67,18 @@
             <a class="text-blue-700 underline underline-offset-4" href="{% url 'account_login' %}">sign in</a>
           </p>
         </div>
-        <div class="flex flex-col">
-          <a href="{% url 'google_login' %}" class="auth-form-btn-2 text-center">
-            Or Continue With Google
-          </a>
-        </div>
+
+        {% get_providers as socialaccount_providers %}
+        {% if socialaccount_providers %}
+
+          <p class="">Continue with social account</p>
+
+          <div class="space-y-2 mt-2">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+          </div>
+
+          {% include "socialaccount/snippets/login_extra.html" %}
+        {% endif %}
       </div>
     
       

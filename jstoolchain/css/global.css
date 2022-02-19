@@ -20,7 +20,7 @@
 }
 
 .auth-form-btn-1 {
-  @apply text-white font-bold bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4;
+  @apply text-white font-bold bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4 w-full;
 }
 
 .auth-form-btn-2 {
