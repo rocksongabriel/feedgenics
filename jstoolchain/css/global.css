@@ -1,28 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ------------------------------- FORMS ----------------------- */
+.auth-form-container {
+  @apply px-6 md:px-2 mx-5 mt-2 md:mt-16 mb-20 md:w-[21.875rem];
+}
+
+.auth-form-heading {
+  @apply text-center capitalize text-4xl py-5 font-bold text-white;
+}
+
+.auth-form-subheading {
+  @apply text-left text-lg text-white;
+}
+
 .auth-form-label {
-  @apply text-black text-lg;
+  @apply text-white;
 }
 
 .auth-form-input {
-  @apply py-2.5 px-2 md:px-4 w-full 
-  border-2 border-gray-300
-  focus:border-gray-900
-  outline-none
+  @apply py-1.5 px-2 md:px-4 w-full 
+  outline-none bg-almost-black border border-gray-500 text-white focus:border-mustard-brown
   rounded-md
 }
 
 .auth-form-helptext {
-  @apply text-sm text-black
+  @apply text-sm text-gray-300
+}
+
+.auth-form-linktext {
+  @apply text-sm text-cornflower-blue hover:text-mustard-brown underline underline-offset-4;
 }
 
 .auth-form-btn-1 {
-  @apply text-white font-bold bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4 w-full;
+  @apply text-white bg-cornflower-blue hover:bg-blue-700 rounded-md py-2 px-4 w-full;
 }
 
 .auth-form-btn-2 {
-  @apply text-white font-bold bg-green-700 hover:bg-green-800 rounded-md py-2 px-4;
+  @apply text-white bg-green-700 hover:bg-green-800 rounded-md py-2 px-4;
+}
+
+.auth-form-google-btn {
+  @apply text-almost-black bg-white font-semibold 
+  w-full capitalize py-2 border border-gray-300 
+  rounded-md flex justify-around;
 }
