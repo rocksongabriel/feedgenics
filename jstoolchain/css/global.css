@@ -16,7 +16,7 @@
 }
 
 .auth-form-subheading {
-  @apply text-left text-lg text-white;
+  @apply text-sm text-left py-2 text-gray-200;
 }
 
 .auth-form-label {
