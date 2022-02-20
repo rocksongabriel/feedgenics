@@ -543,6 +543,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-6{
   width: 1.5rem;
 }
+.appearance-none{
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
 .flex-col{
   flex-direction: column;
 }
@@ -580,6 +585,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.p-1{
+  padding: 0.25rem;
 }
 .py-4{
   padding-top: 1rem;
@@ -647,6 +655,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .underline-offset-4{
   text-underline-offset: 4px;
+}
+.accent-violet-500{
+  accent-color: #8b5cf6;
+}
+.accent-cornflower-blue{
+  accent-color: #3361CC;
 }
 
 /* ------------------------------- FORMS ----------------------- */

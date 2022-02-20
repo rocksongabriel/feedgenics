@@ -7,8 +7,8 @@
 
 {% block content %}
 
-  <div class="px-6 md:px-10 py-8 md:w-3/5 lg:w-2/5 bg-white mx-5 mt-16 md:mt-20 mb-20 rounded-md">
-    <h1 class="text-center uppercase text-3xl py-4 font-bold text-black">{% trans "Login" %}</h1>
+  <div class="auth-form-container">
+    <h1 class="auth-form-heading">{% trans "Login" %}</h1>
 
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
@@ -36,8 +36,8 @@
           />
         </div>
         <div>
-          <label class="auth-form-label" for="{{form.remember.id_for_label}}">Remember Me:</label>
-          <input class="" type="checkbox" name="{{form.remember.name}}" id="{{form.remember.id_for_label}}">
+          <label class="auth-form-helptext" for="{{form.remember.id_for_label}}">Remember Me:</label>
+          <input class="accent-cornflower-blue" type="checkbox" name="{{form.remember.name}}" id="{{form.remember.id_for_label}}">
         </div>
       </div>
 
@@ -45,14 +45,14 @@
         <div>
           <button class="auth-form-btn-1" type="submit">{% trans "Sign In" %}</button>
           <a 
-            class="text-blue-800 underline underline-offset-4 text-sm" 
+            class="auth-form-linktext" 
             href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}
           </a>
         </div>
         
         <div>
           <p class="auth-form-helptext">{% blocktrans %}Not having an account?
-          <a class="text-blue-800 underline underline-offset-4" href="{{ signup_url }}">sign up</a>{% endblocktrans %}</p>
+          <a class="auth-form-linktext" href="{{ signup_url }}">sign up</a>{% endblocktrans %}</p>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
         {% get_providers as socialaccount_providers %}
         {% if socialaccount_providers %}
 
-          <p class="">Continue with social account</p>
+          <p class="auth-form-helptext">Continue with social account</p>
 
           <div class="space-y-2 mt-2">
             {% include "socialaccount/snippets/provider_list.html" with process="login" %}
