@@ -4,8 +4,8 @@
 {% block title %}{% trans "Create an account at Feedgenics" %}{% endblock %}
 
 {% block content %}
-  <div class="px-6 md:px-10 py-8 md:w-3/5 lg:w-2/5 bg-white mx-5 mt-16 md:mt-20 mb-20 rounded-md">
-    <h1 class="text-center uppercase text-3xl py-4 font-bold text-black">{% trans "Signup" %}</h1>
+  <div class="auth-form-container">
+    <h1 class="auth-form-heading">{% trans "Signup" %}</h1>
 
     <form 
       class="" 
@@ -64,14 +64,14 @@
             {% endblocktrans %}
           </p>
           <p class="self-center">
-            <a class="text-blue-700 underline underline-offset-4" href="{% url 'account_login' %}">sign in</a>
+            <a class="auth-form-linktext" href="{% url 'account_login' %}">sign in</a>
           </p>
         </div>
 
         {% get_providers as socialaccount_providers %}
         {% if socialaccount_providers %}
 
-          <p class="">Continue with social account</p>
+          <p class="auth-form-helptext">Continue with social account</p>
 
           <div class="space-y-2 mt-2">
             {% include "socialaccount/snippets/provider_list.html" with process="login" %}
