@@ -1,25 +1,17 @@
-{% load socialaccount %}
-
+{% load socialaccount static %} 
 {% get_providers as socialaccount_providers %}
 
 {% for provider in socialaccount_providers %}
-  {% if provider.id == "openid" %}
-    {% for brand in provider.get_brands %}
-      <div class="flex flex-col">
-        <a title="{{brand.name}}" 
-          href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
-          class="auth-form-btn-2 text-center {{provider.id}} {{brand.id}}"
-        >{{brand.name}}</a>
-      </div>
-    {% endfor %}
-  {% endif %}
-  <div class="flex flex-col">
-    <a 
-      title="{{provider.name}}"
-      href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
-      class="auth-form-btn-2 text-center {{provider.id}}"
-    >
+<div class="">
+  <a
+    title="{{provider.name}}"
+    href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
+    class="auth-form-google-btn {{provider.id}}"
+  >
+    <span class="flex">
+      <img class="w-6 h-6 mr-2" src="{% static 'icons/google-icon.png' %}" />
       {{provider.name}}
-    </a>
-  </div>
+    </span>
+  </a>
+</div>
 {% endfor %}
