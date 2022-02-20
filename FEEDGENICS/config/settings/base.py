@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     # Developer apps
     "users.apps.UsersConfig",
+    "pages.apps.PagesConfig",
     # 3rd party applications
     "django_extensions",
     "allauth",
