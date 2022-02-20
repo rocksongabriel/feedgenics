@@ -8,7 +8,7 @@
 
 /* ------------------------------- FORMS ----------------------- */
 .auth-form-container {
-  @apply px-6 md:px-2 mx-5 mt-2 md:mt-16 mb-20 md:w-[21.875rem];
+  @apply px-6 md:px-2 mx-5 mt-2 md:mt-16 mb-20 sm:w-[21.875rem];
 }
 
 .auth-form-heading {
@@ -24,7 +24,7 @@
 }
 
 .auth-form-input {
-  @apply py-1.5 px-2 md:px-4 w-full 
+  @apply py-1.5 px-2 sm:px-4 w-full 
   outline-none bg-almost-black border border-gray-500 text-white focus:border-mustard-brown
   rounded-md
 }
@@ -49,4 +49,25 @@
   @apply text-almost-black bg-white font-semibold 
   w-full capitalize py-2 border border-gray-300 
   rounded-md flex justify-around;
+}
+
+/* --------------------------------------- CONTAINERS --------------------------------------------- */
+.info-container {
+  @apply w-4/5 sm:w-1/2 mt-2 md:mt-16 mb-20;
+}
+
+.info-heading {
+  @apply text-center capitalize text-3xl sm:text-4xl py-5 font-bold text-white;
+}
+
+.info-text-1 {
+  @apply text-sky-300 py-1;
+}
+.info-text-2 {
+  @apply text-gray-300 py-1;
+}
+
+/* ----------------------------------------- BUTTONS ------------------------------------------------- */
+.mustard-btn {
+  @apply text-black bg-mustard-brown rounded-md py-2 px-4;
 }
