@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 @tailwind base;
@@ -34,7 +34,7 @@
 }
 
 .auth-form-linktext {
-  @apply text-sm text-cornflower-blue hover:text-mustard-brown underline underline-offset-4;
+  @apply text-sm text-blue-400 visited:text-purple-600 hover:text-mustard-brown underline underline-offset-4;
 }
 
 .auth-form-btn-1 {
@@ -70,4 +70,8 @@
 /* ----------------------------------------- BUTTONS ------------------------------------------------- */
 .mustard-btn {
   @apply text-black bg-mustard-brown rounded-md py-2 px-4;
+}
+
+.danger-btn {
+  @apply text-white bg-red-600 hover:bg-red-700 rounded-md py-2 px-4;
 }
