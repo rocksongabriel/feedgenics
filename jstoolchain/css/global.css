@@ -75,3 +75,12 @@
 .danger-btn {
   @apply text-white bg-red-600 hover:bg-red-700 rounded-md py-2 px-4;
 }
+
+.primary-btn {
+  @apply text-white bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4;
+}
+
+/* ----------------------------------------- NAVBAR --------------------------------------------------- */
+.nav-link {
+  @apply text-sky-200 hover:text-sky-400 hover:underline hover:underline-offset-8
+}
