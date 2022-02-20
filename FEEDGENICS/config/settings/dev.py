@@ -18,6 +18,8 @@ DEFAULT_FROM_EMAIL = "test@feedgenics.com"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# DJANGO DEBUG TOOLBAR SETTINGS
+
 MIDDLEWARE.insert(
     2,
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -26,3 +28,8 @@ MIDDLEWARE.insert(
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+def show_toolbar(request):
+    return False
+
+DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": show_toolbar}
