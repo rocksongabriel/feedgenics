@@ -11,6 +11,11 @@
     <h1 class="auth-form-heading">{% trans "Login" %}</h1>
 
     <form class="login" method="POST" action="{% url 'account_login' %}">
+
+      {% if form.errors %}
+      <small class="auth-form-error">{{ form.errors }}</small>
+      {% endif %}
+
       {% csrf_token %}
       <div class="space-y-2">
         <div>
@@ -23,6 +28,11 @@
             value="{% if form.login.value %}{{ form.login.value }} {% else %}""{% endif %}"
             required={{ form.login.required }}
           />
+          {% if form.login.errors %}
+            {% for error in form.login.errors %}
+              <small class="auth-form-error">{{ error }}</small>
+            {% endfor %}
+          {% endif %}
         </div>
         <div>
           <label class="auth-form-label" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
@@ -34,6 +44,11 @@
             value="{% if form.password.value %}{{ form.password.value }}{% else %}""{% endif %}"
             required="{{ form.password.required }}"
           />
+          {% if form.password.errors %}
+            {% for error in form.password.errors %}
+              <small class="auth-form-error">{{ error }}</small>
+            {% endfor %}
+          {% endif %}
         </div>
         <div>
           <label class="auth-form-helptext" for="{{form.remember.id_for_label}}">Remember Me:</label>

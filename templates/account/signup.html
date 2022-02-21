@@ -16,39 +16,24 @@
       {% csrf_token %}
       
       <div class="space-y-2">
-        <div>
-          <label class="auth-form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-          <input 
-            type="email"
-            class="auth-form-input"
-            id="{{ form.email.id_for_label }}" 
-            name="{{ form.email.name }}" 
-            value="{% if form.email.value %}{{ form.email.value }} {% else %}""{% endif %}"
-            required={{ form.email.required }}
-          />
-        </div>
-        <div>
-          <label class="auth-form-label" for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
-          <input 
-            type="password"
-            class="auth-form-input" 
-            id="{{ form.password1.id_for_label }}"
-            name="{{ form.password1.name }}"
-            value="{% if form.password1.value %}{{ form.password1.value }}{% else %}""{% endif %}"
-            required="{{ form.password1.required }}"
-          />
-        </div>
-        <div>
-          <label class="auth-form-label" for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
-          <input 
-            type="password"
-            class="auth-form-input"
-            id="{{ form.password2.id_for_label }}"
-            name="{{ form.password2.name }}"
-            value="{% if form.password2.value %}{{ form.password2.value }}{% else %}""{% endif %}"
-            required="{{ form.password2.required }}"
-          />
-        </div>
+        {% for field in form %}
+          <div>
+            <label class="auth-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <input 
+              type="{{ field.field.widget.input_type }}"
+              class="auth-form-input" 
+              id="{{ field.id_for_label }}"
+              name="{{ field.name }}"
+              value="{% if field.value %}{{ field.value }}{% else %}""{% endif %}"
+              required="{{ field.field.required }}"
+            />
+            {% if field.errors %}
+              {% for error in field.errors %}
+                <small class="auth-form-error">{{ error }}</small>
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
       </div>
 
       {% if redirect_field_value %}
