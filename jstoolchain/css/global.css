@@ -34,7 +34,7 @@
 }
 
 .auth-form-linktext {
-  @apply text-sm text-blue-400 visited:text-purple-400 hover:text-mustard-brown underline underline-offset-4;
+  @apply text-sm text-blue-400 visited:text-purple-400 hover:text-mustard-brown underline underline-offset-4 transition-all duration-150;
 }
 
 .auth-form-error {
@@ -42,17 +42,17 @@
 }
 
 .auth-form-btn-1 {
-  @apply text-white bg-cornflower-blue hover:bg-blue-700 rounded-md py-2 px-4 w-full;
+  @apply text-white bg-cornflower-blue hover:bg-blue-700 rounded-md py-2 px-4 w-full transition-all duration-150;
 }
 
 .auth-form-btn-2 {
-  @apply text-white bg-green-700 hover:bg-green-800 rounded-md py-2 px-4;
+  @apply text-white bg-green-700 hover:bg-green-800 rounded-md py-2 px-4 transition-all duration-150;
 }
 
 .auth-form-google-btn {
   @apply text-almost-black bg-white font-semibold 
   w-full capitalize py-2
-  rounded-md flex justify-around;
+  rounded-md flex justify-around hover:bg-cornflower-blue hover:text-white transition-all duration-150;
 }
 
 /* --------------------------------------- CONTAINERS --------------------------------------------- */
@@ -77,16 +77,16 @@
 }
 
 .danger-btn {
-  @apply text-white bg-red-600 hover:bg-red-700 rounded-md py-2 px-4;
+  @apply text-white bg-red-600 hover:bg-red-700 rounded-md py-2 px-4 transition-all duration-150;
 }
 
 .primary-btn {
-  @apply text-white bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4;
+  @apply text-white bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4 transition-all duration-150;
 }
 
 /* ----------------------------------------- NAVBAR --------------------------------------------------- */
 .nav-link {
-  @apply text-sky-200 hover:text-sky-400 hover:underline hover:underline-offset-8
+  @apply text-sky-200 hover:text-sky-400 hover:underline hover:underline-offset-8 transition-all duration-150;
 }
 
 .nav-container {
