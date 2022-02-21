@@ -12,7 +12,7 @@
 }
 
 .auth-form-heading {
-  @apply text-center capitalize text-4xl py-5 font-bold text-white;
+  @apply text-center capitalize text-3xl md:text-4xl py-5 font-bold text-white;
 }
 
 .auth-form-subheading {
@@ -34,7 +34,7 @@
 }
 
 .auth-form-linktext {
-  @apply text-sm text-blue-400 visited:text-purple-600 hover:text-mustard-brown underline underline-offset-4;
+  @apply text-sm text-blue-400 visited:text-purple-400 hover:text-mustard-brown underline underline-offset-4;
 }
 
 .auth-form-btn-1 {
@@ -47,7 +47,7 @@
 
 .auth-form-google-btn {
   @apply text-almost-black bg-white font-semibold 
-  w-full capitalize py-2 border border-gray-300 
+  w-full capitalize py-2
   rounded-md flex justify-around;
 }
 
@@ -83,4 +83,8 @@
 /* ----------------------------------------- NAVBAR --------------------------------------------------- */
 .nav-link {
   @apply text-sky-200 hover:text-sky-400 hover:underline hover:underline-offset-8
+}
+
+.nav-container {
+  @apply py-4 px-5 md:px-20 lg:px-32 xl:px-52
 }

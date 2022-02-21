@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="{% static 'css/tailwind/global.css' %}">
-
-  <title>{% block title %}{% endblock title %}</title>
-  {% block extra_head %}{% endblock %}
-</head>
-
+{% extends 'base.html' %}
 <body class="bg-almost-black font-open-sans">
 
-  <nav class="py-4 px-5 xl:px-64">
+  {% block navbar %}
+  <nav class="nav-container">
     <div class="flex justify-between">
       <div class="self-center">
         <a 
@@ -27,25 +14,17 @@
       </div>
     </div>
   </nav>
-
-  <main class="xl:px-64 flex justify-center">
-    {% block content %}
-      {% if messages %}
-        {% for message in messages %}
-          <ul>
-          <li>{message}</li>
-          </ul>
-        {% endfor %}
-      {% endif %}
-    {% endblock content %}
-  </main>
-
-  <!-- TODO add the footer, but only if it will fit the page and stay at the bottom -->
-  {% comment %} <footer class="fixed w-full py-1 text-white">
-    <div class="text-center">
-      <p>Feedgenics - All rights reversed - 2022</p>
+  {% endblock navbar %}
+  
+  
+    
+  {% block content %}
+    <div class="w-full h-screen flex justify-center">
+      {% block auth_content %}{% endblock auth_content %}
     </div>
-  </footer> {% endcomment %}
+  {% endblock content %}
+    
+
 
 </body>
 

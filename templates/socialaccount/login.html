@@ -1,7 +1,7 @@
 {% extends "socialaccount/base.html" %}
 {% load i18n %}
 
-{% block content %}
+{% block auth_content %}
 
   {% if process == "connect" %}
     <div class="info-container">
@@ -35,4 +35,4 @@
     </div>
   {% endif %}
 
-{% endblock content %}
+{% endblock auth_content %}
