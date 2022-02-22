@@ -76,3 +76,5 @@ class Entry(models.Model):
         ordering = [
             "-published",
         ]
+        verbose_name = "Entry"
+        verbose_name_plural = "Entries"
