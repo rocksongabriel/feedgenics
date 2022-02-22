@@ -8,6 +8,8 @@ User = settings.AUTH_USER_MODEL
 
 
 class Feed(models.Model):
+    """Model to handle create and save models"""
+
     name = models.CharField(
         verbose_name=_("Feed Name"),
         help_text="What is the name of this feed",
@@ -50,4 +52,27 @@ class Feed(models.Model):
     class Meta:
         ordering = [
             "-created",
+        ]
+
+
+class Entry(models.Model):
+    """Model to create and save entries of models"""
+
+    feed = models.ForeignKey(Feed, on_delete=models.CASCADE, related_name="entries")
+    published = models.DateTimeField()
+    title = models.CharField(
+        verbose_name=_("Title of Entry"), max_length=500, null=False, blank=False
+    )
+    link = models.URLField(
+        verbose_name=_("Link to Post"), max_length=600, blank=False, null=False
+    )
+    summary = models.TextField(blank=True, null=True)
+    emailed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = [
+            "-published",
         ]
