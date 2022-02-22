@@ -12,7 +12,7 @@
 }
 
 .auth-form-heading {
-  @apply text-center capitalize text-3xl md:text-4xl py-5 font-bold text-white;
+  @apply text-center capitalize text-3xl py-5 font-bold text-white;
 }
 
 .auth-form-subheading {
@@ -55,13 +55,13 @@
   rounded-md flex justify-around hover:bg-cornflower-blue hover:text-white transition-all duration-150;
 }
 
-/* --------------------------------------- CONTAINERS --------------------------------------------- */
+/* --------------------------------------- INFO -------------------------------------------------------- */
 .info-container {
   @apply w-4/5 sm:w-1/2 mt-2 md:mt-16 mb-20;
 }
 
 .info-heading {
-  @apply text-center capitalize text-3xl sm:text-4xl py-5 font-bold text-white;
+  @apply text-center capitalize text-3xl py-5 font-bold text-white;
 }
 
 .info-text-1 {

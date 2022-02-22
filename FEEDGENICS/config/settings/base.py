@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     # Developer apps
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
+    "feeds.apps.FeedsConfig",
     # 3rd party applications
     "django_extensions",
     "allauth",

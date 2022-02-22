@@ -596,6 +596,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-bold{
   font-weight: 700;
 }
+.capitalize{
+  text-transform: capitalize;
+}
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -656,15 +659,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-transform: capitalize;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-@media (min-width: 768px){
-
-
-  .auth-form-heading{
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
 }
 
 .auth-form-subheading{
@@ -820,7 +814,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-/* --------------------------------------- CONTAINERS --------------------------------------------- */
+/* --------------------------------------- INFO -------------------------------------------------------- */
 .info-container{
   margin-top: 0.5rem;
   margin-bottom: 5rem;
@@ -851,15 +845,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-transform: capitalize;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px){
-
-
-  .info-heading{
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
 }
 
 .info-text-1{
