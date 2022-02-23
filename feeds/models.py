@@ -37,6 +37,9 @@ class Feed(models.Model):
     number_of_update_posts = models.PositiveSmallIntegerField(
         verbose_name=_("Number of Latest Updates"),
         help_text="How many latest posts should be fetched from the feed at the interval specified",
+        blank=False,
+        null=False,
+        default=1,
     )
     email = models.EmailField(
         verbose_name=_("Email Address"),
