@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Your feeds{% endblock title %}
+
+
+{% block navbar %}
+  <nav class="nav-container">
+    <div class="flex justify-between">
+      <div class="self-center">
+        <a 
+          href="{% url 'pages:homepage' %}" 
+          class="font-bold text-2xl md:text-2xl text-white font-montserrat-alternatives"
+        >
+          <span class="text-fuchsia-400">Feed</span><span class="text-fuchsia-300">genics</span>
+        </a>
+      </div>
+      <div class="self-center space-x-5 text-white text-sm">
+        <span class="flex space-x-2">
+          {% comment %} Replace with user avatar, or default avatar {% endcomment %}
+          <img class="w-5 h-5" src="{% static 'icons/google-icon.png' %}" alt="">
+          <span>{{ user.email }}</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+{% endblock navbar %}
+
+
+{% block content %}
+
+  <div class="flex lg:space-x-5 h-full w-full mb-10">
+
+    <div class="flex-initial w-80 h-min pb-5 px-4 bg-gray-200">
+      <p class="text-2xl font-bold py-5">Feeds List</p>
+
+      <div class="flex justify-end pb-4">
+        <button class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-bold">Add New Feed</button>
+      </div>
+
+      <div class='space-y-3'>
+        {% for feed in "feeds" %}
+          <p class="bg-gray-900 text-white p-2 rounded-md">
+            {% lorem 6 w random %} <br>
+            <span class="px-2 rounded-md font-bold bg-green-300 text-green-800">6 entries</span>
+          </p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="flex-1 px-4 pb-5 bg-gray-200 h-min">
+      <div class="space-y-2">
+        <p class="text-2xl py-5 font-bold">Feed Entries</p>
+        {% for entry in "entries" %}
+          <div class="py-2 px-4">
+            <p class="py-1 text-sm font-bold">Published: 24/22/2022</p>
+            <p class="py-2 text-gray-900 font-bold text-lg">{% lorem 15 w random %}</p>
+            <p class=" text-gray-800">{% lorem 23 w random %}</p> 
+            <div class="flex space-x-3 py-2">
+              {% if False %}
+                <span class="bg-green-300 text-green-900 px-2 py-1 font-bold rounded-md">
+                  emailed: yes
+                </span>
+              {% else %}
+                <span class="bg-red-300 text-red-900 px-2 py-1 font-bold rounded-md">
+                  emailed: no
+                </span>
+              {% endif %}
+              <button class="py-1 px-2 bg-green-800 hover:bg-green-700 font-bold text-white rounded-md">
+                show all
+              </button>
+              <a href="#" class="text-blue-800 underline underline-offset-8">go to source</a>
+              </div>
+          </div>
+          <hr class="border border-gray-500">
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}

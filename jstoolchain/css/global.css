@@ -90,5 +90,5 @@
 }
 
 .nav-container {
-  @apply py-4 px-5 md:px-20 lg:px-32 xl:px-52
+  @apply py-4 px-5 md:px-12
 }
