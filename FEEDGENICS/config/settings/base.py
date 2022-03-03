@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
@@ -126,8 +127,8 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
 
-ACCOUNT_LOGOUT_REDIRECT_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "/accounts/email/"
+ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy("account_login")
+LOGIN_REDIRECT_URL = reverse_lazy("users:dashboard")
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
