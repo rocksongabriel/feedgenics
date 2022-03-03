@@ -15,12 +15,9 @@
           <span class="text-fuchsia-400">Feed</span><span class="text-fuchsia-300">genics</span>
         </a>
       </div>
-      <div class="self-center space-x-5 text-white text-sm">
-        <span class="flex space-x-2">
-          {% comment %} Replace with user avatar, or default avatar {% endcomment %}
-          <img class="w-5 h-5" src="{% static 'icons/google-icon.png' %}" alt="">
-          <span>{{ user.email }}</span>
-        </span>
+      <div class="self-center space-x-3">
+        <span class="text-white">{{ user.email }}</span>
+        <a href="{% url 'account_logout' %}" class="bg-red-600 hover:bg-red-700 text-white px-2 py-2 rounded-md font-bold">logout</a>
       </div>
     </div>
   </nav>
